@@ -3,12 +3,21 @@
 
 void UBullCowCartridge::BeginPlay() // When the game starts
 {
+
+    
     Super::BeginPlay();
+
+
+    SetupGame();
+
+
+    PrintLine(FString::Printf(TEXT("The Hidden Word is: %s"), *HiddenWord)); // Debug Line
+
     PrintLine(TEXT("Hello!"));
     PrintLine(TEXT("Guess the 4 letter word"));
     PrintLine(TEXT("Press enter to begin"));
 
-    SetupGame();
+   
     //Settingupthegame
  
 
