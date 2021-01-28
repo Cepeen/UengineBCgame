@@ -10,39 +10,39 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 
     SetupGame();
 
+    PrintLine(TEXT("The Hidden Word is %s."), *HiddenWord); // Debug Line
 
-    PrintLine(FString::Printf(TEXT("The Hidden Word is: %s"), *HiddenWord)); // Debug Line
+    // welcoming the player
 
     PrintLine(TEXT("Hello!"));
-    PrintLine(TEXT("Guess the 4 letter word"));
+    PrintLine(TEXT("Guess the %i letter word!"), HiddenWord.Len());
     PrintLine(TEXT("Press enter to begin"));
 
-   
-    //Settingupthegame
- 
-
-    //Set Lives
-
     //Prompt Player For Guess
+
+    EndGame();
 }
 
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
 {
     ClearScreen();
-
-
+// if game is over do ClearScreen() and SetupGame()
+// checking player guess
 
 if (Input == HiddenWord)
 {
     PrintLine(TEXT("Congratulations!"));
+    // bGameOver = true;
 }
 else 
 {
     if (Input.Len()!=HiddenWord.Len())
 {
-    PrintLine(TEXT("The hidden word is 4 characters long."));
+    PrintLine(TEXT("The hidden word is: %s characters long."));
 }
      PrintLine(TEXT("You have lost!"));
+   // bGameOver = true;
+
 }
 //Check If Isogram
 //Check Right Number
@@ -63,6 +63,7 @@ else
 
 void UBullCowCartridge::SetupGame()
 {
-HiddenWord = TEXT("cake");  
+HiddenWord = TEXT("cakes");  
 Lives = 4; 
+// bGameOver = false;
 }
